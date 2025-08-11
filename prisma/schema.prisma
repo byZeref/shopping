@@ -1,19 +1,24 @@
-datasource db {
-  url      = env("DATABASE_URL")
-  provider = "postgresql"
-}
-
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native", "darwin-arm64"]
 }
 
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
 // Models
-model Product {
+model product {
   id          Int      @id @default(autoincrement())
   name        String
   description String
-  stock       Int
+  price       Float
+  stock       Int?
+  category    String?
+  image       String?
+  image_url   String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
