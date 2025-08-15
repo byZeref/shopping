@@ -13,11 +13,6 @@
   --error-color: #F87171;
 }
 
-*::selection {
-  background-color: #4c1b1e !important;
-  color: #fff !important;
-}
-
 body {
   background-color: var(--background-color);
   text-rendering: optimizeLegibility;

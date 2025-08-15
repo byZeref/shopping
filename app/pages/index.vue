@@ -18,7 +18,7 @@ const cartStore = useCartStore()
 
 <template>
   <div>
-    <h1>Home Page</h1>
+    <h1 class="text-2xl font-bold text-green-500">Home Page</h1>
     <p v-if="pending">Loading products...</p>
     <ul v-else-if="products?.length > 0">
       <li v-for="prod in products" :key="prod.id">{{ prod.name }}</li>
