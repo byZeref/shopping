@@ -2,7 +2,7 @@
   --primary-color: #7f2c30;
   --primary-color-soft: #4c1b1e;
   --text-color: #000;
-  --background-color:#FAFAFA;
+  --background-color: #FAFAFA;
   --error-color: #EF4444;
 }
 
@@ -23,6 +23,8 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  box-sizing: border-box;
   font-family:
     /*Montserrat,*/
     -apple-system,

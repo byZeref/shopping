@@ -10,3 +10,20 @@ export interface Product {
   created_at?: string,
   updated_at?: string,
 }
+
+export interface User {
+  email: string,
+  password: string,
+}
+
+export interface UserData {
+  user: User,
+  access_token: string,
+  refresh_token: string,
+}
+
+export type AuthError = {
+  name: string,
+  status: number,
+  __isAuthError: boolean,
+}

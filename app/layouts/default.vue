@@ -1,6 +1,6 @@
 <template>
   <header>
-    <Navbar />
+    <Navbar class="navbar" />
   </header>
 
   <main class="main-content">
@@ -8,7 +8,7 @@
   </main>
 
   <footer>
-    <!-- <Footer class="footer" /> -->
+     <Footer class="footer" />
   </footer>
 </template>
 

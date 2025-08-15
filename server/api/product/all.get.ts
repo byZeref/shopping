@@ -5,15 +5,20 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
-  // const { supabase } = await useSupabase(event)
-  // const { data: products, error, status } = await supabase.from('product').select()
-
   // Only allow specified methods, (for generic file extension ('all.ts' not 'all.get.ts'))
   // assertMethod(event, ['GET'])
   // Get the route params
   // const { chapterSlug, lessonSlug } = event.context.params
 
   const products = await prisma.product.findMany()
+  const { supabase } = await useSupabase(event)
+
+  // const { data: imageUrl } = supabase
+  //   .storage
+  //   .from('images')
+  //   .getPublicUrl('products/creatina-02.webp')
+  //
+  // console.log('image', imageUrl)
 
   if (!products) {
     throw createError({
