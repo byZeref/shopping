@@ -3,6 +3,11 @@ definePageMeta({
   layout: "admin",
 })
 
+const form = ref({
+  email: 'sandorsc941018@gmail.com',
+  password: 'Zeref.shopping',
+})
+
 const route = useRoute();
 console.log(route)
 </script>
@@ -27,7 +32,7 @@ console.log(route)
     width: 100%;
     max-width: 500px;
     height: 500px;
-    background-color: #1B2430;
+    //background-color: #1B2430;
 
   }
 }

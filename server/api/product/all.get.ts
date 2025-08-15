@@ -1,6 +1,7 @@
 import type { Product } from "#shared/types"
 import { useSupabase } from "~~/server/utils/supabase";
 import { PrismaClient } from '@prisma/client';
+import {SUPABASE_BUCKET} from "#shared/constants";
 
 const prisma = new PrismaClient()
 
@@ -15,10 +16,10 @@ export default defineEventHandler(async (event) => {
 
   // const { data: imageUrl } = supabase
   //   .storage
-  //   .from('images')
+  //   .from(SUPABASE_BUCKET!)
   //   .getPublicUrl('products/creatina-02.webp')
   //
-  // console.log('image', imageUrl)
+  // console.info('image', imageUrl)
 
   if (!products) {
     throw createError({
