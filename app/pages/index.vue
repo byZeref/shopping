@@ -1,4 +1,6 @@
 <script setup>
+import {useCartStore} from "~/store/cart.js";
+
 const { data: products, error, refresh, pending } = await useFetch('/api/product/all', {
   onRequestError({ request, response, options }) {
     console.error('error sending req')
@@ -9,6 +11,8 @@ const { data: products, error, refresh, pending } = await useFetch('/api/product
 })
 console.log('products', products.value)
 console.log('error', error.value)
+
+const cartStore = useCartStore()
 
 </script>
 

@@ -1,4 +1,4 @@
-import type { Product } from "~~/types"
+import type { Product } from "#shared/types"
 import { useSupabase } from "~~/server/utils/supabase";
 import { PrismaClient } from '@prisma/client';
 
@@ -7,6 +7,11 @@ const prisma = new PrismaClient()
 export default defineEventHandler(async (event) => {
   // const { supabase } = await useSupabase(event)
   // const { data: products, error, status } = await supabase.from('product').select()
+
+  // Only allow specified methods, (for generic file extension ('all.ts' not 'all.get.ts'))
+  // assertMethod(event, ['GET'])
+  // Get the route params
+  // const { chapterSlug, lessonSlug } = event.context.params
 
   const products = await prisma.product.findMany()
 
