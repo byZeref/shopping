@@ -12,18 +12,20 @@ export interface Product {
 }
 
 export interface User {
-  email: string,
-  password: string,
+  email?: string,
+  password?: string,
 }
 
 export interface UserData {
   user: User,
   access_token: string,
   refresh_token: string,
+  ok?: boolean,
 }
 
 export type AuthError = {
   name: string,
   status: number,
+  code: string,
   __isAuthError: boolean,
 }

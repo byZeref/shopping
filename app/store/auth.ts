@@ -1,22 +1,18 @@
 import type { User, UserData, AuthError } from '#shared/types'
 
 export const useAuthStore = defineStore('auth', () => {
-  const user = useCookie<User | undefined>('auth')
-  const access_token = useCookie<string | undefined>('acc_t')
-  const refresh_token = useCookie<string | undefined>('ref_t')
+  const user = useCookie<User | undefined>('sh_auth')
+  const access_token = useCookie<string | undefined>('sh_acc_t')
+  const refresh_token = useCookie<string | undefined>('sh_ref_t')
   const isLogged = computed(() => !!user.value)
 
   const login = async (payload: object) => {
-    const { data, error }: { data?: UserData & { ok: boolean }, error?: AuthError } = await $fetch('/api/auth/login', {
+    const res = await $fetch('/api/auth/login', {
       method: 'post',
       body: payload,
     })
-    if (data?.ok) {
-      // @ts-expect-error - operand error
-      delete data.ok
-      saveUserData(data)
-    }
-    return { data, error }
+    if (res.data?.ok) saveUserData(res.data)
+    return res
   }
 
   const logout = async () => {

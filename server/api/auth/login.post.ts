@@ -9,7 +9,10 @@ export default defineEventHandler(async (event) => {
 
   if (error) {
     console.error('error on login', error)
-    return { error }
+    throw createError({
+      statusCode: error.status,
+      statusMessage: error.message,
+    })
   }
 
   const { email: userEmail, role } = data.user

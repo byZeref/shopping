@@ -28,15 +28,15 @@ export default defineNuxtConfig({
     head: {
       title: 'Shopping App',
       meta: [
-        { name: 'theme-color', content: '#4c1b1e' },
+        { name: 'theme-color', content: process.env.PROJECT_PRIMARY_COLOR },
         { name: 'description', content: 'Tienda de productos fitness y accesorios para el gym' },
         { property: 'og:title', content: 'Shopping App' },
         { property: 'og:description', content: 'Tienda de productos fitness y accesorios para el gym' },
         // TODO set business image url
-        // { property: 'og:image', content: 'logo.png' },
+        { property: 'og:image', content: process.env.PROJECT_OG_IMAGE },
       ],
       link: [
-        { rel: 'icon', href: 'logo-white.png' }
+        { rel: 'icon', href: '/shop-small.ico' }
       ]
     },
   },

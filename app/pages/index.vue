@@ -12,8 +12,6 @@ const { data: products, error, refresh, pending } = await useFetch('/api/product
 console.log('products', products.value)
 console.log('error', error.value)
 
-const cartStore = useCartStore()
-
 </script>
 
 <template>
