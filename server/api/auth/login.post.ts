@@ -16,6 +16,7 @@ export default defineEventHandler(async (event) => {
     throw createError({
       statusCode: error.status,
       statusMessage: error.message,
+      message: 'El correo electrónico o la contraseña son incorrectos.',
     })
   }
 

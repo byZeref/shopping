@@ -10,6 +10,7 @@ definePageMeta({
 const authStore = useAuthStore()
 const router = useRouter()
 const loading = ref(false)
+const error = inject("error")
 
 const handleLogin = async (credentials) => {
   const payload = { ...credentials }
@@ -17,6 +18,7 @@ const handleLogin = async (credentials) => {
   const res = await authStore.login(payload)
     .catch(e => {
       console.error('error in login request', e)
+      error.value = e
     })
     .finally(() => { loading.value = false })
 

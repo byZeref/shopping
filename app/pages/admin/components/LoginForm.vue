@@ -7,10 +7,10 @@ defineProps({
   loading: Boolean,
 })
 const form = ref({
-  email: '',
-  password: '',
-  // email: 'sandorsc941018@gmail.com',
-  // password: 'Zeref.shopping',
+  // email: '',
+  // password: '',
+  email: 'sandorsc941018@gmail.com.xd',
+  password: 'Zeref.shopping',
 })
 
 const passwordType = ref('password')
