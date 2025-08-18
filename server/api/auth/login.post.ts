@@ -1,8 +1,10 @@
+import { validateLogin } from "~~/server/utils/validation";
+
 export default defineEventHandler(async (event) => {
   const { email, password } = await readBody(event)
   const { supabase } = await useSupabase(event)
 
-  // TODO validate body
+  validateLogin({ email, password })
 
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
