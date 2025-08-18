@@ -2,6 +2,8 @@ export default defineEventHandler(async (event) => {
   const { email, password } = await readBody(event)
   const { supabase } = await useSupabase(event)
 
+  // TODO validate body
+
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,

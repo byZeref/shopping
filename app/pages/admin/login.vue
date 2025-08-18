@@ -32,8 +32,8 @@ const handleLogin = async (credentials) => {
       <img src="/login-logo.ico" class="w-[120px] h-auto" alt="Business Logo">
       <h4 class="text-center text-3xl font-light">Inicio de sesión</h4>
     </div>
-    <LoginForm :loading @login="handleLogin" />
-    <ContactAdmin />
+    <LoginForm class="max-w-[450px]" :loading @login="handleLogin" />
+    <ContactAdmin class="max-w-[450px]" />
   </div>
 </template>
 
