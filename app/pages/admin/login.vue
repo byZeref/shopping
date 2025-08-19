@@ -1,7 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import LoginForm from "~/pages/admin/components/LoginForm.vue";
 import ContactAdmin from "~/pages/admin/components/ContactAdmin.vue";
 import { useAuthStore } from "~/store/auth.js";
+import type { GenericError, LoginCredentials } from "#shared/types";
 
 definePageMeta({
   layout: "admin",
@@ -10,15 +11,15 @@ definePageMeta({
 const authStore = useAuthStore()
 const router = useRouter()
 const loading = ref(false)
-const error = inject("error")
+const handleError: (e: GenericError) => void = inject("handleError")!
 
-const handleLogin = async (credentials) => {
+const handleLogin = async (credentials: LoginCredentials) => {
   const payload = { ...credentials }
   loading.value = true
   const res = await authStore.login(payload)
     .catch(e => {
       console.error('error in login request', e)
-      error.value = e
+      handleError(e)
     })
     .finally(() => { loading.value = false })
 

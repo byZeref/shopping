@@ -1,14 +1,11 @@
-<script setup>
-defineProps({
-  color: {
-    type: String,
-    required: false,
-    default: 'currentColor'
-  },
-  size: {
-    type: String,
-    default: '24'
-  }
+<script setup lang="ts">
+type Props = {
+  color?: string,
+  size?: string,
+}
+withDefaults(defineProps<Props>(), {
+  color: 'currentColor',
+  size: '24',
 })
 </script>
 

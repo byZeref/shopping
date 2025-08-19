@@ -1,11 +1,13 @@
-<script setup>
+<script setup lang="ts">
 import EyeIcon from "~/components/icons/EyeIcon.vue";
 import EyeCloseIcon from "~/components/icons/EyeCloseIcon.vue";
 
-defineEmits(["login"]);
-defineProps({
-  loading: Boolean,
-})
+type Props = {
+  loading: boolean
+}
+defineProps<Props>()
+defineEmits(["login"])
+
 const form = ref({
   // email: '',
   // password: '',
@@ -13,7 +15,7 @@ const form = ref({
   password: 'Zeref.shopping',
 })
 
-const passwordType = ref('password')
+const passwordType: 'password' | 'text' = ref('password')
 const togglePasswordType = () => {
   passwordType.value = passwordType.value === 'password' ? 'text' : 'password'
 }

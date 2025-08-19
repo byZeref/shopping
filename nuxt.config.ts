@@ -36,7 +36,7 @@ export default defineNuxtConfig({
         { property: 'og:image', content: process.env.PROJECT_OG_IMAGE },
       ],
       link: [
-        { rel: 'icon', href: '/shop-small.ico' }
+        { rel: 'icon', href: '/favicon.ico' }
       ]
     },
   },

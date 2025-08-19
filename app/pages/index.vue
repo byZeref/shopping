@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import {useCartStore} from "~/store/cart.js";
 
 const { data: products, error, refresh, pending } = await useFetch('/api/product/all', {

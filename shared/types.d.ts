@@ -23,9 +23,21 @@ export interface UserData {
   ok?: boolean,
 }
 
-export type AuthError = {
+export interface AuthError {
   name: string,
   status: number,
   code: string,
   __isAuthError: boolean,
+}
+
+export interface GenericError {
+  status: number,
+  statusCode: number,
+  message: string,
+  statusMessage: string,
+}
+
+export interface LoginCredentials {
+  email: string,
+  password: string,
 }

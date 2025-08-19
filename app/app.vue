@@ -1,18 +1,19 @@
 <script setup lang="ts">
-const error: Ref<object | null> = ref(null)
-provide('error', error)
+import { useErrors } from "~/composables/errors";
+import DialogAlert from "~/components/DialogAlert.vue";
 
+const { error, removeError } = useErrors()
 
 </script>
 
 <template>
-  <BaseDialog
+  <DialogAlert
     v-if="!!error"
     :show="!!error"
-    is-error-dialog
-    :description="error.message"
+    type="error"
+    :description="error"
     @update:show:dialog="(val) => {
-      if (!val) error = null
+      if (!val) removeError()
     }"
   />
 
