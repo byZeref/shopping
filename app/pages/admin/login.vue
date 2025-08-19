@@ -27,6 +27,7 @@ const handleLogin = async (credentials: LoginCredentials) => {
     return router.push('/admin')
   }
 }
+// TODO reset password
 </script>
 
 <template>
