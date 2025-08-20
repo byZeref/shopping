@@ -11,11 +11,11 @@ defineEmits(["login"])
 const form = ref({
   // email: '',
   // password: '',
-  email: 'sandorsc941018@gmail.com.xd',
+  email: 'sandorsc941018@gmail.com',
   password: 'Zeref.shopping',
 })
 
-const passwordType: 'password' | 'text' = ref('password')
+const passwordType: Ref<'password' | 'text'> = ref('password')
 const togglePasswordType = () => {
   passwordType.value = passwordType.value === 'password' ? 'text' : 'password'
 }

@@ -8,4 +8,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
   if (!isLogged.value && PROTECTED_ROUTES.includes(to.name as string)) {
     return navigateTo('/admin/login')
   }
+  if (isLogged.value && to.name === 'admin-login') {
+    return navigateTo('/admin')
+  }
 })
