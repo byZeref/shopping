@@ -20,12 +20,19 @@ interface Props {
   type: DialogType,
   title?: string,
   description?: string,
+  cancellable?: boolean,
+  confirmAction?: () => void,
+  confirmText?: string,
 }
 
 defineEmits(['update:show:dialog'])
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  confirmText: 'Aceptar'
+})
 
 const titleText = computed(() => {
+  if (props.title) return props.title
+
   let text
   switch (props.type) {
     case 'error':
@@ -40,8 +47,6 @@ const titleText = computed(() => {
     case 'success':
       text = 'Bien!'
       break
-    default:
-      text = props.title
   }
   return text
 })
@@ -73,14 +78,27 @@ const titleText = computed(() => {
         <DialogTitle class="m-1 text-2xl md:text-3xl text-center text-gray-700 font-semibold">
           {{ titleText }}
         </DialogTitle>
-        <DialogDescription class="mt-2 mb-5 text-sm md:text-base text-center">
+        <DialogDescription class="mt-2 mb-6 text-sm md:text-base text-center">
           {{ description }}
         </DialogDescription>
 
         <slot name="default" />
 
-        <div class="mt-auto flex justify-end">
-          <DialogClose as-child>
+        <div class="mt-auto flex flex-col gap-2 justify-end">
+          <slot name="actions">
+            <DialogClose v-if="cancellable" as-child>
+              <button
+                class="error-btn text-sm md:text-base w-full"
+                :class="[
+                  { 'border border-red-500 text-red-500': type === 'error' },
+                  { 'border border-sky-500 text-sky-500': type === 'info' },
+                  { 'border border-amber-600 text-amber-600': type === 'warning' },
+                  { 'border border-emerald-500 text-emerald-500': type === 'success' },
+                ]"
+              >
+                Cancelar
+              </button>
+            </DialogClose>
             <button
               class="error-btn text-sm md:text-base w-full text-white"
               :class="[
@@ -89,10 +107,11 @@ const titleText = computed(() => {
                 { 'bg-amber-600': type === 'warning' },
                 { 'bg-emerald-500': type === 'success' },
               ]"
+              @click="confirmAction ? confirmAction() : $emit('update:show:dialog', false)"
             >
-              Aceptar
+              {{ confirmText }}
             </button>
-          </DialogClose>
+          </slot>
         </div>
       </DialogContent>
     </DialogPortal>
